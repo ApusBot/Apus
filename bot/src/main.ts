@@ -1,13 +1,12 @@
-import { Logger } from '@nestjs/common';
-import { NestFactory } from '@nestjs/core';
-import { AppModule } from './app.module';
+import { bootstrap } from './server';
 
-const PORT = 3000;
+const main = async () => {
+  const app = await bootstrap();
 
-async function bootstrap() {
-  const logger = new Logger('Bootstrap');
-  const app = await NestFactory.create(AppModule);
-  await app.listen(PORT);
-  logger.log(`Application listening on port ${PORT}`);
-}
-bootstrap();
+  if (process.env.START_REPL === '1') {
+    const { startRepl } = await import('./repl');
+    startRepl(app);
+  }
+};
+
+main();
