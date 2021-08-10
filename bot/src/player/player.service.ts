@@ -3,7 +3,7 @@ import { SoundPlayer } from "./sound.player";
 
 
 @Injectable()
-export class PlayersService {
+export class PlayerService {
     private readonly players: SoundPlayer[] = [];
 
     get(serverId: string): SoundPlayer {
