@@ -12,6 +12,8 @@
     "baseUrl": "./",
     "incremental": true,
     "skipLibCheck": true,
+    "strict": true,
+    "strictNullChecks": true,
     "paths": {
       "@/*": ["src/*"],
       "@test/*": ["test/*"]

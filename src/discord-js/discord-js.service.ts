@@ -20,8 +20,9 @@ export class DiscordJsService
   ) {
     super();
 
+    const user = this.user;
     this.on('ready', () => {
-      this.logger.log(`Bot ready as ${this.user.tag}`);
+      this.logger.log(`Bot ready as ${user?.tag}`);
     });
 
     this.on('warn', (args) => {

@@ -1,12 +1,21 @@
 import { Test, TestingModule } from '@nestjs/testing';
+import { SOUND_PLAYER_FACTORY } from './player.consts';
 import { PlayerService } from './player.service';
+import { DefaultSoundPlayerFactory } from './player.factory';
 
 describe('PlayerService', () => {
   let service: PlayerService;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      providers: [PlayerService],
+      providers: [
+        PlayerService,
+        DefaultSoundPlayerFactory,
+        {
+          provide: SOUND_PLAYER_FACTORY,
+          useExisting: DefaultSoundPlayerFactory,
+        },
+      ],
     }).compile();
 
     service = module.get<PlayerService>(PlayerService);
