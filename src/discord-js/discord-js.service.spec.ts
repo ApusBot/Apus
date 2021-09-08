@@ -1,3 +1,4 @@
+import { discordConfig } from '@/config/discord.config';
 import { Test, TestingModule } from '@nestjs/testing';
 import { DiscordJsService } from './discord-js.service';
 
@@ -6,7 +7,10 @@ describe(DiscordJsService.name, () => {
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      providers: [DiscordJsService],
+      providers: [
+        DiscordJsService,
+        { provide: discordConfig.KEY, useValue: {} },
+      ],
     }).compile();
 
     service = module.get<DiscordJsService>(DiscordJsService);

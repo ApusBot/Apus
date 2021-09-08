@@ -6,7 +6,7 @@ import {
   OnApplicationShutdown,
 } from '@nestjs/common';
 import { Client as DiscordClient } from 'discord.js';
-import { DiscordConfig, discordConfig } from 'src/config/discord.config';
+import { DiscordConfig, discordConfig } from '@/config/discord.config';
 
 @Injectable()
 export class DiscordJsService
